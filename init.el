@@ -1,7 +1,6 @@
 ;;Library Paths
 
 (add-to-list 'load-path "~/.emacs.d")
-(progn (cd "~/.emacs.d") (normal-top-level-add-subdirs-to-load-path))
 
 ;; Libraries to autoload
 
@@ -55,7 +54,7 @@
  )
 
 ;; ======== IBuffer ========
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;;(global-set-key (kbd "C-x C-b") 'ibuffer)
 
     
 ;; ======== Deft ========
