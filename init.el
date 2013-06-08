@@ -1,63 +1,66 @@
-;;Library Paths
-
 (add-to-list 'load-path "~/.emacs.d")
 
-;; Libraries to autoload
+;; el-get
+;; see https://github.com/dimitri/emacs-kicker/blob/master/init.el
 
-(require 'dired-single)
-(require 'linum)
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(load-library "keyboard-shortcuts")
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
+   (lambda (s)
+     (end-of-buffer)
+     (eval-print-last-sexp))))
+           
+;; set local recipes
+(setq
+  el-get-sources
+  '((:name buffer-move    ; have to add your own keys
+           :after (progn
+                    (global-set-key (kbd "<C-S-up>") 'buf-move-up)
+                    (global-set-key (kbd "<C-S-down>") 'buf-move-down)
+                    (global-set-key (kbd "<C-S-left>") 'buf-move-left)
+                    (global-set-key (kbd "<C-S-right>") 'buf-move-right)))
 
-(load-library "setup-dirtree")
-(load-library "setup-org-mode")
+    (:name smex    ; a better (ido like) M-x
+           :after (progn
+                    (setq smex-save-file "~/.emacs.d/.smex-items")
+                    (global-set-key (kbd "M-x") 'smex)
+                    (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+
+    (:name goto-last-change    ; move pointer back to last change
+          :after (progn
+                   ;; when using AZERTY keyboard, consider C-x C-_
+                   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
+
+;; now set our own packages
+(setq
+  my:el-get-packages
+  '(el-get               ; el-get is self-hosting
+    autopair
+    deft
+    emacs-dirtree
+    flycheck
+    jedi
+    nose
+    virtualenv
+    yaml-mode
+    color-theme
+    monokai-theme
+    solarized-theme
+   ))  
+
+(setq my:el-get-packages
+      (append
+       my:el-get-packages
+       (loop for src in el-get-sources collect (el-get-source-name src))))
+
+;; install new packages and init already installed packages
+(el-get 'sync my:el-get-packages)
+
+(load-library "setup-window")   
+(load-library "setup-keyboard")   
+(load-library "setup-ido")   
 (load-library "setup-python")
-(load-library "setup-subversion")
-(load-library "setup-yaml")
+(load-library "setup-org-mode")
 
-;; Calendar settings
-
-(setq calendar-longitude -9.15)
-(setq calendar-latitude 38.73)
-(setq calendar-location-name "Lisbon, PT")
-
-;; Base text mode and other configuration
-
-(setq default-major-mode 'text-mode)
-(line-number-mode t)
-(column-number-mode t)
-(setq-default fill-column 72)
-(setq-default indent-tabs-mode nil)
-(setq auto-fill-mode 1)
-(setq x-select-enable-clipboard t)
-
-;; Turn off UI extras
-
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(current-language-environment "UTF-8")
- '(org-agenda-files (quote ("~/Dropbox/Tasks/tasks.org")))
- '(tool-bar-mode nil))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
-
-;; ======== IBuffer ========
-;;(global-set-key (kbd "C-x C-b") 'ibuffer)
-
-    
-;; ======== Deft ========
-
-(require 'deft)
-(setq deft-directory "~/Dropbox/notes/")

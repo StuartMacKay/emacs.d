@@ -1,5 +1,7 @@
 *~
-ac-comphist.dat
-eproject.lst
-session*
-url/
+.*
+!.gitignore
+
+auto-save-list/
+el-get/
+
