@@ -1,3 +1,7 @@
+;; themes
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/monokai-theme")
+
 ;; full screen
 (defun fullscreen ()
   (interactive)

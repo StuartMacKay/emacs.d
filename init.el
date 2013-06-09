@@ -14,7 +14,7 @@
     (let (el-get-master-branch)
       (goto-char (point-max))
       (eval-print-last-sexp))))
-           
+
 ;; set local recipes
 (setq
   el-get-sources
@@ -46,12 +46,15 @@
     flycheck
     jedi
     nose
+    pymacs
+    rope
+    ropemacs
+    ropemode
     virtualenv
     yaml-mode
     color-theme
     monokai-theme
-    solarized-theme
-   ))  
+    solarized-theme))  
 
 (setq my:el-get-packages
       (append
@@ -61,9 +64,9 @@
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
 
-(load-library "setup-window")   
-(load-library "setup-keyboard")   
-(load-library "setup-ido")   
+(load-library "setup-window")
+(load-library "setup-keyboard")
+(load-library "setup-ido")
 (load-library "setup-python")
 (load-library "setup-org-mode")
 
