@@ -3,6 +3,7 @@
 !.gitignore
 
 ac-comphist.dat
+session.*
 
 auto-save-list/
 el-get/
