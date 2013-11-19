@@ -71,7 +71,6 @@
   my:el-get-packages
   '(el-get               ; el-get is self-hosting
     autopair
-    deft
     emacs-dirtree
     flycheck
     jedi
