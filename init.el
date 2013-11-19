@@ -48,7 +48,6 @@
     emacs-dirtree
     flycheck
     jedi
-    nose
     pymacs
     rope
     ropemacs
