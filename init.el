@@ -51,10 +51,7 @@
     ropemacs
     ropemode
     virtualenv
-    yaml-mode
-    color-theme
-    monokai-theme
-    solarized-theme))  
+    yaml-mode))  
 
 (setq my:el-get-packages
       (append

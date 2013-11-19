@@ -1,6 +1,6 @@
 ;; themes
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/monokai-theme")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; full screen
 (defun fullscreen ()
@@ -26,7 +26,8 @@
 (windmove-default-keybindings 'meta)
 (setq windmove-wrap-around t)
 
-;; (set-face-font 'default "Monospace-10")
+(set-face-font 'default "Monospace-10")
+(set-face-attribute 'default nil :height 100)
 
 ;; Save desktip layout on exit
 (require 'desktop)
