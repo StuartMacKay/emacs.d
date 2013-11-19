@@ -3,6 +3,7 @@
 !.gitignore
 
 ac-comphist.dat
+bookmarks
 session.*
 
 auto-save-list/
