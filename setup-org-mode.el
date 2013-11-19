@@ -3,7 +3,7 @@
 
 (setq org-startup-indented t)
 
-(setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE"))
+(setq org-todo-keywords '("TODO" "STARTED" "WAITING" "|" "DONE" "CANCELLED"))
 
 ;;;; Org Capture
 
