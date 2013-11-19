@@ -51,7 +51,8 @@
     ropemacs
     ropemode
     virtualenv
-    yaml-mode))  
+    yaml-mode
+    web-mode))  
 
 (setq my:el-get-packages
       (append
@@ -65,5 +66,5 @@
 (load-library "setup-keyboard")
 (load-library "setup-ido")
 (load-library "setup-python")
+(load-library "setup-django")
 (load-library "setup-org-mode")
-
