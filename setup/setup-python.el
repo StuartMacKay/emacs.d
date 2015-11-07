@@ -1,7 +1,7 @@
 (require 'autopair)
 (autopair-global-mode)
 
-(require 'virtualenv)
+(require 'python-environment)
 
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
