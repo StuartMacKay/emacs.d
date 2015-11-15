@@ -13,3 +13,10 @@
 (global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
 (global-set-key (kbd "C-x B") 'ibuffer)
 
+;; Use to get curly brackets using alt-shift-8, alt-shift-9 on macs
+;; with portuguese keyboards.
+(if (eq system-type 'darwin)
+  (setq mac-option-modifier nil
+        mac-command-modifier 'meta
+        x-select-enable-clipboard t)
+)
