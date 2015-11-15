@@ -77,6 +77,7 @@
 (load "setup-python")
 (load "setup-django")
 (load "setup-org-mode")
+(load "setup-utilities")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
