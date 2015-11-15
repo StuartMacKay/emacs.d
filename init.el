@@ -66,6 +66,9 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
+;; install the following packages manually
+;; flycheck - the el-get hosted version does not work
+
 ;; setup
 
 (add-to-list 'load-path "~/.emacs.d/setup")
