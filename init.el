@@ -1,10 +1,10 @@
 ;; Stuart's Emacs Setup
-;; Copyright (C) 2013 Stuart MacKay
+;; Copyright (c) 2013-2015 Stuart MacKay
 ;;
 ;; Author: Stuart MacKay <smackay@flagstonesoftware.com>
 ;; URL: https://github.com/StuartMacKay/emacs.d
 ;; Created: 2013-06-08
-;; Keywords: emacs setup python django
+;; Keywords: emacs setup python django org-mode
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 ;;
 ;; This file is NOT part of GNU Emacs.
@@ -72,6 +72,7 @@
 
 (load "setup-window")
 (load "setup-keyboard")
+(load "setup-text-mode")
 (load "setup-ido")
 (load "setup-python")
 (load "setup-django")
