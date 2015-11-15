@@ -72,6 +72,7 @@
 
 (load "setup-window")
 (load "setup-keyboard")
+(load "setup-common")
 (load "setup-text-mode")
 (load "setup-ido")
 (load "setup-python")
