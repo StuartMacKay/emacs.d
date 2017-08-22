@@ -1,4 +1,4 @@
-;;;; Utilities - useful functions
+;;; Utilities - useful functions
 
 (defun json-format ()
   ;; Format the json data displayed in a buffer.
