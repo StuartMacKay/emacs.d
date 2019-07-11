@@ -11,87 +11,70 @@
 ;;;
 ;;; This file is NOT part of GNU Emacs.
 ;;;
-;;; The setup steals things from various "Emacs as a Python IDE" articles
-;;; and is intended to work with Emacs 24.
+;;; The setup steals things from various authors and only works
+;;; with Emacs 24+.
 ;;;
 ;;; Sources:
-;;;   https://github.com/dimitri/emacs-kicker/blob/master/init.el
-;;;   http://caisah.info/emacs-for-python/
-;;;
-;;; Commentary:
-;;; My original setup was based on Gabriel Lanaro's awesomely excellent
-;;; emacs for python, https://github.com/gabrielelanaro/emacs-for-python.
-;;; The idea was to create a cross platform install that could be used on
-;;; my desktop (Ubuntu) and eeepc (Ubuntu/XP) first using Dropbox and then
-;;; Github. However keeping it up to date while still allowing customizations
-;;; to cover various installation quirks for each platform proved messy. The
-;;; discovery of el-get in particular the ability to bootstrap itself solved
-;;; a lot of these issues.
+;;;   http://aaronbedra.com/emacs.d/
 
-;;; el-get
-;;;
-;;; the install script fails when run on windows xp so paste it into the
-;;; scratch buffer and evualate it there.
+(require 'cl)
 
-;;; Code:
-
-(defvar el-get-github-default-url-type)
-(defvar el-get-recipe-path)
-
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(setq el-get-github-default-url-type "https")
-
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://github.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
-
-;;; now either el-get is require'd already, or has been loaded by the
-;;; el-get installer.
-
-;; Now set our own packages
-
-(defvar my-packages)
-
-(setq
-  my-packages
-  '(el-get
-    autopair
-    jedi
-    pymacs
-    rope
-    ropemacs
-    ropemode
-    yaml-mode
-    web-mode))
-
-(el-get 'sync my-packages)
-
-;; add MELPA after el-get to avoid warnings when downloaded packages
-;; are available from both repositories.
+;;; Packages
 
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-;; install the following packages manually
-;; flycheck - the el-get hosted version does not work
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(defvar mypackages '(ac-slime
+                     auto-complete
+                     autopair
+                     elpy
+                     flycheck
+                     js2-mode
+                     json-mode
+                     magit
+                     markdown-mode
+                     monokai-theme
+                     org
+                     py-autopep8
+                     slime
+                     smex
+                     web-mode
+                     writegood-mode
+                     yaml-mode)
+  "Default packages")
+
+(defun mypackages-installed-p ()
+  (loop for pkg in mypackages
+        when (not (package-installed-p pkg)) do (return nil)
+        finally (return t)))
+
+(unless (mypackages-installed-p)
+  (message "%s" "Refreshing package database...")
+  (package-refresh-contents)
+  (dolist (pkg mypackages)
+    (when (not (package-installed-p pkg))
+      (package-install pkg))))
+
 
 ;; setup
 
 (add-to-list 'load-path "~/.emacs.d/setup")
 
-(load "setup-window")
-(load "setup-keyboard")
-(load "setup-common")
-(load "setup-text-mode")
+(load "setup-emacs")
 (load "setup-ido")
-(load "setup-python")
-(load "setup-django")
+(load "setup-smex")
+(load "setup-themes")
+(load "setup-modes")
+(load "setup-spellchecker")
+(load "setup-javascript-mode")
+(load "setup-markdown-mode")
 (load "setup-org-mode")
+(load "setup-python-mode")
+(load "setup-text-mode")
+(load "setup-web-mode")
 (load "setup-utilities")
 
 (custom-set-variables
@@ -99,8 +82,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("/Users/stuart/Tasks/todo.org")))
- '(package-selected-packages (quote (flycheck))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

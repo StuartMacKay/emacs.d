@@ -1,3 +1,7 @@
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook
-  '(lambda() (set-fill-column 80)))
+;;; Text mode
+
+(defun text-configure ()
+  "text-mode configuration"
+  (turn-on-auto-fill))
+
+(add-hook 'text-mode-hook 'text-configure)
