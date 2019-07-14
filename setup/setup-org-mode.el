@@ -5,7 +5,7 @@
 
 (setq org-startup-indented t)
 
-(setq org-todo-keywords '("TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
+(setq org-todo-keywords '("TODO(t)" "STARTED(s)" "WAITING(w@)" "|" "DONE(d)" "CANCELLED(c@)"))
 
 ;;;; Org Capture
 
