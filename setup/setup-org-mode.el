@@ -14,13 +14,24 @@
 
 (global-set-key (kbd "\C-cc") 'org-capture)
 
-(setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/Tasks/refile.org")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("n" "note" entry (file "~/Tasks/refile.org")
-               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("h" "Habit" entry (file "~/Tasks/refile.org")
-               "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
+(setq org-capture-templates (quote (
+    ("i" "Idea" entry
+         (file+headline "~/Tasks/todo.org" "Inbox")
+         "** IDEA %?")
+
+    ("n" "Notes" entry
+         (file+headline "~/Tasks/todo.org" "Inbox")
+         "** %?")
+
+    ("t" "Task" entry
+         (file+headline "~/Tasks/todo.org" "Inbox")
+         "** TODO %?")
+
+    ("j" "Journal" entry
+         (file+datetree "~/Tasks/journal.org")
+         "**** %U %?" :tree-type week)
+
+    )))
 
 ;; Remove empty LOGBOOK drawers on clock out
 (defun bh/remove-empty-drawer-on-clock-out ()
