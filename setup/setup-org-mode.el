@@ -88,4 +88,4 @@
 
 (setq org-agenda-include-diary t)
 (setq org-agenda-include-all-todo t)
-(setq org-agenda-files (quote ("~/Tasks")))
+(setq org-agenda-files (quote ("~/Tasks/todo.org")))
