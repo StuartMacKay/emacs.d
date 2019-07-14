@@ -10,7 +10,7 @@
 ;;;; Org Capture
 
 (setq org-directory "~/Tasks")
-(setq org-default-notes-file "~/Tasks/refile.org")
+(setq org-default-notes-file "~/Tasks/todo.org")
 
 (global-set-key (kbd "\C-cc") 'org-capture)
 
