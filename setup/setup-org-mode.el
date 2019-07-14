@@ -80,7 +80,7 @@
 
 ;;;; Org Log
 
-(setq org-log-done nil)
+(setq org-log-done 'time)
 
 ;;;; Org Agenda
 
