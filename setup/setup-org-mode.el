@@ -48,8 +48,8 @@
 ;;;; Org Refile
 
 ;; Targets include this file and any file contributing to the agenda - up to 4 levels deep
-(setq org-refile-targets (quote ((nil :maxlevel . 4)
-                                 (org-agenda-files :maxlevel . 4))))
+(setq org-refile-targets (quote ((nil :maxlevel . 3)
+                                 (org-agenda-files :maxlevel . 3))))
 
 ;; Use full outline paths for refile targets - we file directly with IDO
 (setq org-refile-use-outline-path t)
@@ -88,4 +88,6 @@
 
 (setq org-agenda-include-diary t)
 (setq org-agenda-include-all-todo t)
-(setq org-agenda-files (quote ("~/Tasks/todo.org")))
+(setq org-agenda-files
+      '("~/Tasks/todo.org"
+        "~/Tasks/projects"))
