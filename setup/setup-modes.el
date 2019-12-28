@@ -2,6 +2,7 @@
 
 (line-number-mode 1)              ; have line numbers and
 (column-number-mode 1)            ; column numbers in the mode line
+(autopair-global-mode)            ; enable autopair in all buffers
 
 ;; (cua-mode t)                   ; disable c-x, c-v for now
 
