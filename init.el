@@ -30,6 +30,7 @@
 (defvar mypackages '(ac-slime
                      auto-complete
                      autopair
+		     direx
                      elpy
                      flycheck
                      js2-mode
@@ -82,7 +83,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   (quote
+    (direx yaml-mode writegood-mode web-mode use-package smex py-autopep8 monokai-theme markdown-mode magit json-mode js2-mode flycheck elpy autopair ac-slime))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
