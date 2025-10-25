@@ -13,4 +13,5 @@
 
 (add-to-list 'auto-mode-alist '("\\.bash$" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("\\.gitconfig$" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode))
 

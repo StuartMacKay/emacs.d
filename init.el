@@ -30,11 +30,13 @@
 
 (add-to-list 'load-path "~/.emacs.d/packages")
 
+(require 'beancount)
 
 ;; setup
 
 (add-to-list 'load-path "~/.emacs.d/setup")
 
+(load "setup-beancount")
 (load "setup-emacs")
 (load "setup-themes")
 (load "setup-modes")
