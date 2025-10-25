@@ -27,26 +27,26 @@
 
 ;;;; Org Capture
 
-(setq org-directory "~/Tasks")
-(setq org-default-notes-file "~/Tasks/todo.org")
+(setq org-directory "~/Documents/Tasks")
+(setq org-default-notes-file "~/Documents/Tasks/todo.org")
 
 (global-set-key (kbd "\C-cc") 'org-capture)
 
 (setq org-capture-templates (quote (
     ("i" "Idea" entry
-         (file+headline "~/Tasks/todo.org" "Inbox")
+         (file+headline "~/Documents/Tasks/todo.org" "Inbox")
          "** IDEA %?")
 
     ("n" "Notes" entry
-         (file+headline "~/Tasks/todo.org" "Inbox")
+         (file+headline "~/Documents/Tasks/todo.org" "Inbox")
          "** %?")
 
     ("t" "Task" entry
-         (file+headline "~/Tasks/todo.org" "Inbox")
+         (file+headline "~/Documents/Tasks/todo.org" "Inbox")
          "** TODO %?")
 
     ("j" "Journal" entry
-         (file+datetree "~/Tasks/journal.org")
+         (file+datetree "~/Documents/Tasks/journal.org")
          "**** %U %?" :tree-type week)
 
     )))
@@ -106,6 +106,4 @@
 
 (setq org-agenda-include-diary t)
 (setq org-agenda-include-all-todo t)
-(setq org-agenda-files
-      '("~/Tasks/todo.org"
-        "~/Tasks/projects"))
+(setq org-agenda-files '("~/Documents/Tasks/todo.org"))
