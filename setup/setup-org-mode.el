@@ -7,6 +7,15 @@
 
 (setq org-todo-keywords '("TODO(t)" "STARTED(s)" "WAITING(w@)" "|" "DONE(d)" "CANCELLED(c@)"))
 
+;;;; Font sizes for levels
+
+(with-eval-after-load 'org-faces
+  (dolist (face '(org-document-title
+                 org-level-1
+                 org-level-2
+                 org-level-3))
+   (set-face-attribute face nil :height 1.0)))
+
 ;;;; Org Capture
 
 (setq org-directory "~/Tasks")

@@ -25,13 +25,6 @@
       monokai-orange         "#D19A66"
       monokai-yellow         "#E5C07B")
 
-(setq ;; org-mode headers
-      monokai-height-minus-1 0.8
-      monokai-height-plus-1 1.1
-      monokai-height-plus-2 1.15
-      monokai-height-plus-3 1.2
-      monokai-height-plus-4 1.3)
-
 (defun colorize-compilation-buffer ()
   (toggle-read-only)
   (ansi-color-apply-on-region (point-min) (point-max))
