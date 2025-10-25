@@ -16,6 +16,15 @@
                  org-level-3))
    (set-face-attribute face nil :height 1.0)))
 
+;;;; Task label colours
+
+(setq org-todo-keyword-faces
+      '(("TODO" . "orange")
+        ("DOING" . "yellow")
+        ("BLOCKED" . "red")
+        ("DONE" . "blue")
+        ("ARCHIVED" . "blue")))
+
 ;;;; Org Capture
 
 (setq org-directory "~/Tasks")
