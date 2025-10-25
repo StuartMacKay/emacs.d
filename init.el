@@ -1,12 +1,12 @@
 ;;; package -- Summary:
 ;;;
 ;;; Stuart's Emacs Setup
-;;; Copyright (c) 2013-2017 Stuart MacKay
+;;; Copyright (c) 2013-2025 Stuart MacKay
 ;;;
 ;;; Author: Stuart MacKay <smackay@flagstonesoftware.com>
 ;;; URL: https://github.com/StuartMacKay/emacs.d
 ;;; Created: 2013-06-08
-;;; Keywords: emacs setup python django org-mode
+;;; Keywords: emacs setup org-mode
 ;;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 ;;;
 ;;; This file is NOT part of GNU Emacs.
@@ -17,8 +17,6 @@
 ;;; Sources:
 ;;;   http://aaronbedra.com/emacs.d/
 
-(require 'cl)
-
 ;;; Packages
 
 (require 'package)
@@ -27,37 +25,10 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-(defvar mypackages '(ac-slime
-                     auto-complete
-                     autopair
-		     direx
-                     elpy
-                     flycheck
-                     js2-mode
-                     json-mode
-                     magit
-                     markdown-mode
-                     monokai-theme
-                     org
-                     py-autopep8
-                     slime
-                     smex
-                     web-mode
-                     writegood-mode
-                     yaml-mode)
-  "Default packages")
+;; load locally stored packages
 
-(defun mypackages-installed-p ()
-  (loop for pkg in mypackages
-        when (not (package-installed-p pkg)) do (return nil)
-        finally (return t)))
 
-(unless (mypackages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg mypackages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
+(add-to-list 'load-path "~/.emacs.d/packages")
 
 
 ;; setup
@@ -65,17 +36,11 @@
 (add-to-list 'load-path "~/.emacs.d/setup")
 
 (load "setup-emacs")
-(load "setup-ido")
-(load "setup-smex")
 (load "setup-themes")
 (load "setup-modes")
 (load "setup-spellchecker")
-(load "setup-javascript-mode")
-(load "setup-markdown-mode")
 (load "setup-org-mode")
-(load "setup-python-mode")
 (load "setup-text-mode")
-(load "setup-web-mode")
 (load "setup-utilities")
 
 (custom-set-variables
@@ -83,9 +48,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (direx yaml-mode writegood-mode web-mode use-package smex py-autopep8 monokai-theme markdown-mode magit json-mode js2-mode flycheck elpy autopair ac-slime))))
+ '(package-selected-packages '(direx use-package monokai-theme magit flycheck)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
