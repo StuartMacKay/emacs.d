@@ -6,6 +6,10 @@
 ac-comphist.dat
 bookmarks
 session.*
+history
+recentf
 
 auto-save-list/
 elpa/
+eln-cache/
+custom.el
