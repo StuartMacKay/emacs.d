@@ -60,6 +60,7 @@
   (recentf-mode 1)
   (save-place-mode 1)
   (fido-vertical-mode 1)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
   (add-to-list 'auto-mode-alist '("\\.bash\\'" . shell-script-mode))
   (add-to-list 'auto-mode-alist '("\\.gitconfig\\'" . conf-mode))
   :bind
